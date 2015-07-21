@@ -1,0 +1,68 @@
+# from my mac
+aria2c -x5 "http://cdimage.debian.org/debian-cd/8.1.0/amd64/iso-cd/debian-8.1.0-amd64-netinst.iso"
+# insert usb thumbdrive
+diskutil unmountDisk /dev/disk4
+sudo dd if=debian-8.1.0-amd64-netinst.iso of=/dev/rdisk4 bs=1m
+# connect external usb ethernet
+# configure the bios for UEFI only http://www.dell.com/support/article/us/en/04/SLN297060/?docid=SLN297060
+# Follow first 3 screenshoot only
+# Press F12 when you see the Dell logo to enter boot menu
+# boot from thumb drive udner UEFI BOOT:
+# Make sure it said Debian GNU/Linux UEFI Installer menu
+# Choose Graphical install
+# Partition disks Guided -use entire disk and set up LVM
+# after finish installation
+su
+# add non-free for broadcom wifi driver
+sed -i "s#main#main contrib non-free#g" /etc/apt/sources.list
+apt-get update
+apt-get install broadcom-sta-dkms
+apt-get install vim htop git tree sudo
+adduser <username> sudo
+dpkg-reconfigure console-setup # adjust console font
+# create file in /etc/default/keyboard
+XKBMODEL="pc105"
+XKBLAYOUT="us"
+XKBVARIANT=""
+XKBOPTIONS="ctrl:nocaps"
+
+BACKSPACE="guess"
+#end file keyboard
+
+#create file in /etc/default/console-setup
+ACTIVE_CONSOLES="/dev/tty[1-6]"
+
+CHARMAP="UTF-8"
+
+CODESET="Uni3"
+FONTFACE="Terminus"
+FONTSIZE="16x32"
+
+VIDEOMODE=
+#end file
+
+dpkg-reconfigure keyboard-configuration
+
+# add under profile
+setxkbmap -layout us -option ctrl:nocaps
+
+# my .tmux.conf
+unbind C-b
+bind a send-prefix
+set -s escape-time 1
+set -g base-index 1
+setw -g pane-base-index 1
+set -g default-terminal "screen-256color"
+setw -g mode-keys vi
+set -g history-limit 100000
+
+# edit bashrc
+HISTCONTROL=ignoreboth:erasedups
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+
+HISTSIZE=10000
+HISTFILESIZE=20000

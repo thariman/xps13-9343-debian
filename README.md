@@ -6,5 +6,5 @@ My xps13 version:
 
 i7/8GB — 256GB, Touch TL QHD+  (3200×1800) (Asian) Windows 8
 
-Broadwell wifi
+Broadcom wifi
 

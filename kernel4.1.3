@@ -21,3 +21,13 @@ sudo apt-get remove broadcom-sta-common
 sudo apt-get update
 sudo apt-get -y install broadcom-sta-source
 sudo apt-get -y install broadcom-sta-dkms
+
+# or download direct instead of adding sid repo
+wget http://ftp.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-source_6.30.223.248-3.3_all.deb
+wget http://ftp.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-dkms_6.30.223.248-3.3_all.deb
+wget http://ftp.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-common_6.30.223.248-3.3_all.deb
+dpkg -i broadcom-sta-source_6.30.223.248-3.3_all.deb
+dpkg -i broadcom-sta-dkms_6.30.223.248-3.3_all.deb
+dpkg -i broadcom-sta-common_6.30.223.248-3.3_all.deb
+
+

@@ -7,18 +7,23 @@ sudo dd if=debian-8.1.0-amd64-netinst.iso of=/dev/rdisk4 bs=1m
 # configure the bios for UEFI only http://www.dell.com/support/article/us/en/04/SLN297060/?docid=SLN297060
 # Follow first 3 screenshoot only
 # Press F12 when you see the Dell logo to enter boot menu
-# boot from thumb drive udner UEFI BOOT:
+# boot from thumb drive under UEFI BOOT:
 # Make sure it said Debian GNU/Linux UEFI Installer menu
 # Choose Graphical install
-# Partition disks Guided -use entire disk and set up LVM
+# Partition disks Guided -use entire disk.
+# I use btfs for the /
+# Install only ssh and system essential
 # after finish installation
 su
-# add non-free for broadcom wifi driver
-sed -i "s#main#main contrib non-free#g" /etc/apt/sources.list
 apt-get update
-apt-get install broadcom-sta-dkms
-apt-get install vim htop git tree sudo
+apt-get install sudo
 adduser <username> sudo
+logout
+login
+# add non-free for broadcom wifi driver
+sudo sh -c "echo 'deb http://ftp.debian.org/debian sid main contrib non-free' > /etc/apt/sources.list.d/sid.list && apt-get update"
+sudo apt-get -t sid install broadcom-sta-dkms
+sudo apt-get install vim htop git tree
 dpkg-reconfigure console-setup # adjust console font
 # create file in /etc/default/keyboard
 XKBMODEL="pc105"

@@ -1,0 +1,13 @@
+#snapper cheat sheet
+sudo snapper -c root create-config /  # to create the config
+sudo snapper -c root list
+sudo snapper list-configs
+sudo snapper create --command "apt-get -y install build-essential" --description "install build-essential"
+   same like
+   sudo snapper create -t pre -p --description "install build-essential"
+   sudo apt-get -y install build-essential
+   sudo snapper create -t post --pre-number 1  # assume the pre is 1
+sudo snapper status 1..2
+sudo snapper diff 1..2
+sudo snapper undochange 1..2
+sudo snapper delete 1

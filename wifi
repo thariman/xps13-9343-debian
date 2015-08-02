@@ -3,3 +3,21 @@ iwconfig
 ip link set wlan0 up
 iwlist scan
 wpa_passphrase essid passphrase
+
+# for example
+
+$ wpa_passphrase Home HomeSweetHome
+network={
+	ssid="Home"
+	#psk="HomeSweetHome"
+	psk=fee7d5d77d75d9670d93d07b521b8de3db24fb4168585f5a4bb255baddd56d8f
+}
+
+# add in /etc/network/interfaces
+auto wlan0
+iface wlan-home inet dhcp
+	wpa-ssid Home
+	wpa-psk fee7d5d77d75d9670d93d07b521b8de3db24fb4168585f5a4bb255baddd56d8f
+
+to enable do
+ifup wlan0=wlan-home

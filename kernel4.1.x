@@ -1,17 +1,17 @@
-# install kernel 4.1.3
-wget https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.1.3.xz
-tar xvf linux-4.1.3.tar.xz
+# install kernel 4.1.4
+wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.4.tar.gz
+tar xvf linux-4.1.4.tar.xz
 cd linux-4.1.3
 sudo apt-get install git-core kernel-package fakeroot build-essential ncurses-dev
 cp /boot/config-3.16.0-4-amd64 ./.config
 make menuconfig
 fakeroot make-kpkg --initrd kernel_image kernel_headers kernel_source
 cd ..
-dpkg -i linux-image-4.1.3*.deb
-dpkg -i linux-headers-4.1.3*.deb
+dpkg -i linux-image-4.1.x*.deb
+dpkg -i linux-headers-4.1.x*.deb
 sudo shutdown -r now
 
-# To be able to have wifi on kernel 4.1.3
+# To be able to have wifi on kernel 4.1.x
 sudo apt-get remove broadcom-sta-dkms
 sudo apt-get remove broadcom-sta-source
 sudo apt-get remove broadcom-sta-common
@@ -20,10 +20,6 @@ echo 'deb-src http://ftp.jp.debian.org/debian sid main non-free' >> /etc/apt/sou
 sudo apt-get update
 sudo apt-get -y install broadcom-sta-dkms
 
-# or download direct instead of adding sid repo
-wget http://ftp.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-source_6.30.223.248-3.3_all.deb
-wget http://ftp.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-dkms_6.30.223.248-3.3_all.deb
-wget http://ftp.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-common_6.30.223.248-3.3_all.deb
 
 
 

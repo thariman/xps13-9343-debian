@@ -1,5 +1,5 @@
 # install kernel 4.1.4
-wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.4.tar.gz
+wget https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.4.tar.xz
 tar xvf linux-4.1.4.tar.xz
 cd linux-4.1.4
 sudo apt-get install git-core kernel-package fakeroot build-essential ncurses-dev

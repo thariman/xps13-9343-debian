@@ -4,12 +4,15 @@ tar xvf linux-4.1.4.tar.xz
 cd linux-4.1.3
 sudo apt-get install git-core kernel-package fakeroot build-essential ncurses-dev
 cp /boot/config-3.16.0-4-amd64 ./.config
-make menuconfig
-fakeroot make-kpkg --initrd kernel_image kernel_headers kernel_source
-cd ..
-dpkg -i linux-image-4.1.x*.deb
-dpkg -i linux-headers-4.1.x*.deb
-sudo shutdown -r now
+make menuconfig # make localmodconfig
+make -j4
+sudo make modules_install install
+
+#fakeroot make-kpkg --initrd kernel_image kernel_headers kernel_source
+#cd ..
+#dpkg -i linux-image-4.1.x*.deb
+#dpkg -i linux-headers-4.1.x*.deb
+#sudo shutdown -r now
 
 # To be able to have wifi on kernel 4.1.x
 sudo apt-get remove broadcom-sta-dkms

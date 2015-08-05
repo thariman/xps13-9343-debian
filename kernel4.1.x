@@ -4,7 +4,8 @@ tar xvf linux-4.1.4.tar.xz
 cd linux-4.1.4
 sudo apt-get install git-core kernel-package fakeroot build-essential ncurses-dev
 cp /boot/config-3.16.0-4-amd64 ./.config
-make menuconfig # make localmodconfig
+#make menuconfig or make localmodconfig to create minimal config
+sudo snapper create --command "su $LOGNAME -c 'make menuconfig'" --description "make menuconfig" # do pre/post snapshot
 make -j4
 sudo make modules_install install
 

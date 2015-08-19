@@ -71,3 +71,14 @@ PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 
 HISTSIZE=10000
 HISTFILESIZE=20000
+
+
+#disable graphical
+sudo systemctl set-default multi-user.target
+#enable graphical
+sudo systemctl set-default graphical.target
+# add kernel comand line systemd.unit=multi-user.target
+
+sudo tasksel install gnome-desktop --new-install
+        gnome-desktop-environment
+        gnome-core

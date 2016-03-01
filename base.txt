@@ -23,6 +23,7 @@ login
 
 download kernel 4.4
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-image-4.4.0-1-amd64_4.4.2-3_amd64.deb"
+aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-amd64_4.4.2-3_amd64.deb"
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-common_4.4.2-3_amd64.deb"
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-all_4.4.2-3_amd64.deb"
 sudo dpkg -i *.deb

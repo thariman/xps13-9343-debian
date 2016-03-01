@@ -27,9 +27,10 @@ aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-common_4.4.2-3_amd64.deb"
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-all_4.4.2-3_amd64.deb"
 sudo dpkg -i *.deb
-# add non-free for broadcom wifi driver
-sudo sh -c "echo 'deb http://ftp.debian.org/debian sid main contrib non-free' > /etc/apt/sources.list.d/sid.list && apt-get update"
-sudo apt-get -t sid install broadcom-sta-dkms
+wget http://kambing.ui.ac.id/debian/pool/non-free/b/broadcom-sta/broadcom-sta-dkms_6.30.223.271-2_all.deb
+#add non-free for broadcom wifi driver
+#sudo sh -c "echo 'deb http://ftp.debian.org/debian sid main contrib non-free' > /etc/apt/sources.list.d/sid.list && apt-get update"
+#sudo apt-get -t sid install broadcom-sta-dkms
 sudo apt-get install vim htop git tree
 dpkg-reconfigure console-setup # adjust console font
 # create file in /etc/default/keyboard

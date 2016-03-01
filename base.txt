@@ -20,6 +20,12 @@ apt-get install sudo
 adduser <username> sudo
 logout
 login
+
+download kernel 4.4
+aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-image-4.4.0-1-amd64_4.4.2-3_amd64.deb"
+aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-common_4.4.2-3_amd64.deb"
+aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-all_4.4.2-3_amd64.deb"
+sudo dpkg -i *.deb
 # add non-free for broadcom wifi driver
 sudo sh -c "echo 'deb http://ftp.debian.org/debian sid main contrib non-free' > /etc/apt/sources.list.d/sid.list && apt-get update"
 sudo apt-get -t sid install broadcom-sta-dkms

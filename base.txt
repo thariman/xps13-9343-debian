@@ -20,7 +20,7 @@ apt-get install sudo
 adduser <username> sudo
 logout
 login
-
+sudo apt-get -y install linux-kbuild-4.4 linux-compiler-gcc-5-x86
 download kernel 4.4
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-image-4.4.0-1-amd64_4.4.2-3_amd64.deb"
 aria2c -x5 "http://kambing.ui.ac.id/debian/pool/main/l/linux/linux-headers-4.4.0-1-amd64_4.4.2-3_amd64.deb"

@@ -1,8 +1,8 @@
 # from my mac
-aria2c -x5 "http://cdimage.debian.org/debian-cd/8.1.0/amd64/iso-cd/debian-8.1.0-amd64-netinst.iso"
+aria2c -x5 "http://cdimage.debian.org/debian-cd/8.3.0/amd64/iso-cd/debian-8.3.0-amd64-netinst.iso"
 # insert usb thumbdrive
 diskutil unmountDisk /dev/disk4
-sudo dd if=debian-8.1.0-amd64-netinst.iso of=/dev/rdisk4 bs=1m
+sudo dd if=debian-8.3.0-amd64-netinst.iso of=/dev/rdisk4 bs=1m
 # connect external usb ethernet
 # configure the bios for UEFI only http://www.dell.com/support/article/us/en/04/SLN297060/?docid=SLN297060
 # Follow first 3 screenshoot only
